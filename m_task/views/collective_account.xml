@@ -1,0 +1,24 @@
+<odoo>
+	<record id="m_task_purchase_channel_tree" model="ir.ui.view">
+		<field name="name">collective.account.tree</field>
+		<field name="model">collective.account</field>
+		<field name="arch" type="xml">
+			<tree editable="bottom">
+				<field name="product_id"/>
+				<field name="total_product_qty"/>
+				<field name="total_product_price"/>
+				<field name="partner_id"/>
+			</tree>
+		</field>
+	</record>
+    <record id="m_task_purchase_channel_act" model="ir.actions.act_window">
+        <field name="name">Collective account</field>
+        <field name="res_model">collective.account</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'group_by':['partner_id', 'product_id']}</field>
+        <field name="domain">[]</field>
+    </record>
+	<menuitem id="m_task_collective_account_menu" name="Collective account"
+			  parent="account.menu_finance"
+			  action="m_task_purchase_channel_act" sequence="20"/>
+</odoo>
